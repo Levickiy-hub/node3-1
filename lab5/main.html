@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        function get() {
+            fetch('http://localhost:5000/api/db', {
+                method: 'GET',
+                headers: {'Content-Type': 'application/json'}
+            }).then((res) => {return res.json();})
+                .then((data) => {data.forEach(el => document.getElementById('res').innerHTML += el.id + ' ' + el.name + ' ' + el.bday + '<br/>');});
+        }
+        function post(){
+            fetch('http://localhost:5000/api/db',{
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({id: Id.value, name: Name.value, bday: Bday.value})
+            }).then((res) => {return res.json();})
+                .then((data) => {console.log(data)});
+        }
+        function put() {
+            fetch('http://localhost:5000/api/db', {
+                method: 'PUT',
+                headers: {'Content-Type' : 'application/json'},
+                body: JSON.stringify({id: c_id.value, name: NewName.value, bday: NewBday.value})
+            }).then((res) => {return res.json()})
+            .then((data) => {console.log(data)});
+
+        }
+        function del() {
+            const temp = del_id.value;
+            fetch(('http://localhost:5000/api/db?id=' + Number.parseInt(temp)), {
+                method: 'DELETE',
+                headers: {'Content-Type': 'application/json'},
+                body: Number.parseInt(temp)
+            }).then((data) => console.log(data))
+        }
+    </script>
+    <title>Document</title>
+</head>
+<body>
+<div id="res"></div>
+<div id="err"></div>
+<button onclick="get()">GET</button>
+<form>
+    <fieldset>
+    <legend>Add Person</legend>
+    <div>
+        <label>ID: </label>
+        <input type="number" id="Id">
+    </div>
+    <div>
+        <label>Name: </label>
+        <input type="text" id="Name">
+    </div>
+    <div>
+        <label>Birthday: </label>
+        <input type="text" id="Bday">
+    </div>
+    <div>
+        <button onclick="post()">ADD</button>
+    </div>
+    </fieldset>
+</form>
+<form>
+    <fieldset>
+        <legend>Edit Person</legend>
+        <div>
+            <label>Current ID: </label>
+            <input type="number" id="c_id">
+        </div>
+        <div>
+            <label>New Name: </label>
+            <input type="text" id="NewName">
+        </div>
+        <div>
+            <label>New Birthday: </label>
+            <input type="text" id="NewBday">
+        </div>
+        <div>
+            <button onclick="put()">Put</button>
+        </div>
+    </fieldset>
+</form>
+<form>
+    <fieldset>
+        <legend>Delete Person</legend>
+        <div>
+            <label>Current ID: </label>
+            <input type="number" id="del_id">
+        </div>
+        <div>
+            <button onclick="del()">Delete</button>
+        </div>
+    </fieldset>
+</form>
+</body>
+</html>
