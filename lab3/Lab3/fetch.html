@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script>
+        var srcpt = " ";
+        async function notify() {
+            var starttime = new Date().getTime();
+            for (var i = 1; i < 21; i++) {
+                let response = await fetch('http://localhost:1337/fact?k=' + i);
+                var endtime = new Date().getTime();
+                var time = endtime - starttime;
+
+                srcpt += i + '.Результат: ' + time+'-' + await response.text()+'<br/>';
+            }
+            document.write(`<h1>${srcpt}</h1>\n`);
+    }
+    </script>
+</head>
+
+<body>
+    <button onclick="notify()" style="height: 50px; width: 120px;" />
+</body>
+</html>
