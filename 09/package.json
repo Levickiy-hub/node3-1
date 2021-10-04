@@ -1,0 +1,11 @@
+{
+  "name": "09 - Разработка клиента",
+  "version": "1.0.0",
+  "dependencies": {
+    "multiparty": "^4.2.2"
+  },
+  "devDependencies": {
+    "xml2js": "^0.4.23",
+    "xmlbuilder": "^15.1.1"
+  }
+}
