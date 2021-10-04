@@ -1,3 +1,0 @@
-C:\Users\alber\OneDrive\3course\NODEJS\labs\lab6\lab6\obj\Debug\lab6.njsprojAssemblyReference.cache
-C:\Users\alber\OneDrive\3course\NODEJS\labs\lab6\lab6\obj\Debug\lab6.njsproj.CoreCompileInputs.cache
-C:\Users\alber\OneDrive\3course\NODEJS\labs\lab6\lab6\bin\Microsoft.NodejsTools.WebRole.dll
